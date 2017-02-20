@@ -33,7 +33,7 @@ do_build() {
 }
 
 do_install() {
-  pip install "wal-e==$pkg_version"
+  pip install "wal-e[aws]==$pkg_version"
   # Write out versions of all pip packages to package
   pip freeze > "$pkg_prefix/requirements.txt"
 }
