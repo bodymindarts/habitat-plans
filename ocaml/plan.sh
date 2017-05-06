@@ -13,7 +13,15 @@ pkg_lib_dirs=(lib)
 pkg_bin_dirs=(bin)
 
 do_build() {
-  ./configure --prefix $pkg_prefix && make world
+  ./configure --prefix $pkg_prefix -no-graph && make world
+}
+
+do_check() {
+  make bootstrap
+}
+
+do_strip() {
+  return 0
 }
 
 do_install() {
