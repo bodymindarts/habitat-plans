@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp {{pkg.svc_config_dir}}/config.json {{pkg.svc_data_dir}}
+tezos-node run --sandbox --data-dir "{{pkg.svc_data_dir}}"

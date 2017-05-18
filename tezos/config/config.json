@@ -1,0 +1,14 @@
+{
+  "data-dir": "{{pkg.svc_data_dir}}",
+  "rpc": {
+    "listen-addr": "0.0.0.0:{{cfg.rpc_port}}"
+  },
+
+  "log": {
+    "output": "stdout",
+    "level": "info",
+
+    "rules": "client* -> debug, net -> debug, * -> notice",
+    "template": "$(date) - $(section): $(message)"
+  }
+}
