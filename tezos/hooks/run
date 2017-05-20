@@ -2,5 +2,5 @@
 
 exec 2>&1
 
-cp {{pkg.svc_config_path}}/config.json {{pkg.svc_data_path}}
+export LWT_ASYNC_METHOD=none
 tezos-node run --sandbox --data-dir "{{pkg.svc_data_path}}"
