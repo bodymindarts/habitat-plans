@@ -7,7 +7,7 @@ pkg_version="0.1.0"
 pkg_source="https://github.com/tezos/tezos/archive/master.zip"
 pkg_shasum="754b96e89b0a0fbcb6c7c80fe127cf01dbf098fc231c17ebc121e46fd372570d"
 pkg_dirname="tezos-master"
-pkg_deps=(core/libsodium core/openssl core/glibc core/libev core/gmp core/zlib)
+pkg_deps=(core/libsodium core/openssl core/glibc core/libev core/gmp core/zlib core/git)
 pkg_build_deps=(core/coreutils core/diffutils core/opam core/camlp4 core/perl)
 pkg_bin_dirs=(bin)
 
