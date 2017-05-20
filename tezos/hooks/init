@@ -1,0 +1,30 @@
+#!/bin/bash
+
+exec 2>&1
+
+node='tezos-node'
+node_dir={{pkg.svc_data_path}}
+rpc_addr="127.0.0.1:{{cfg.rpc_port}}"
+
+if [ ! -f "$node_dir/config.json" ]; then
+  "$node" config init \
+    --data-dir "$node_dir" \
+    --rpc-addr "$rpc_addr" \
+    --log-output "stdout"
+else
+  "$node" config update \
+    --data-dir "$node_dir" \
+    --rpc-addr "$rpc_addr" \
+    --log-output "stdout"
+fi
+if [ -f "$node_dir/identity.json" ]; then
+  if ! "$node" identity check \
+    --data-dir "$node_dir" 2> /dev/null; then
+    echo "Ignoring the current peer identity (not enough proof of work)."
+    rm "$node_dir/identity.json"
+  fi
+fi
+if [ ! -f "$node_dir/identity.json" ]; then
+  "$node" identity generate 10 \
+    --data-dir "$node_dir"
+fi
