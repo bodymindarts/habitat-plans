@@ -40,6 +40,7 @@ do_prepare() {
 
   sed -i'' 's/opam install tezos-deps/opam install --yes tezos-deps/' scripts/install_build_deps.sh
   sed -i'' 's/opam pin add typerex-build/opam pin --yes add typerex-build/' scripts/install_build_deps.sh
+  sed -i'' 's/opam pin --yes add --no-action --dev-repo cohttp/opam pin --yes add --no-action cohttp 0.22.0/' scripts/install_build_deps.sh
 }
 
 do_build() {
