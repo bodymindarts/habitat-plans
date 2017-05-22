@@ -63,6 +63,8 @@ index c05323dc..d6385ded 100644
 
 EOF
   git apply ./patch
+  # uncomment the line belod to have shell environment to debug in the process
+  # attach
   make
 }
 
