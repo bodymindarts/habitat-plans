@@ -45,6 +45,24 @@ do_prepare() {
 
 do_build() {
   make build-deps
+  cat <<EOF > patch
+diff --git a/src/client/client_rpcs.ml b/src/client/client_rpcs.ml
+index c05323dc..d6385ded 100644
+--- a/src/client/client_rpcs.ml
++++ b/src/client/client_rpcs.ml
+@@ -89,7 +89,8 @@ let default_config = {
+   host = "localhost" ;
+   port = 8732 ;
+   tls = false ;
+-  logger = null_logger ;
++  (* logger = null_logger ; *)
++  logger = full_logger Format.err_formatter;
+ }
+ 
+ type rpc_error =
+
+EOF
+  git apply ./patch
   make
 }
 
