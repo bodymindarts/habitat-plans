@@ -20,7 +20,7 @@ do_verify() {
 do_unpack() {
   return 0
 }
-cohttp-test
+
 do_prepare() {
    mkdir -p "${HAB_CACHE_SRC_PATH}/cohttp-test"
   cp -r ${PLAN_CONTEXT}/src/* "${HAB_CACHE_SRC_PATH}/${pkg_dirname}/"
@@ -34,11 +34,8 @@ do_prepare() {
   LIBRARY_PATH="$(pkg_path_for libev)/lib"
   export LIBRARY_PATH
   build_line "Setting LIBRARY_PATH=$LIBRARY_PATH"
-  # if [[ ! -r /usr/bin/env ]]; then
-  #   ln -sv "$(pkg_path_for coreutils)/bin/env" /usr/bin/env
-  # fi
+
   opam install --yes ocamlfind lwt cohttp
-  # ocamlfind ocamlopt -linkpkg cohttp_test.ml
 }
 
 do_build() {
