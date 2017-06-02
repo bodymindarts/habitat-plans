@@ -4,10 +4,10 @@ pkg_name=tezos
 pkg_origin=bodymindarts
 pkg_version="0.1.0"
 # pkg_license=('Apache-2.0')
-pkg_source="https://github.com/tezos/tezos/archive/master.zip"
-pkg_shasum="949c4128ff4c4fed2bbfee5f956040089b2e46543ccd20106347dd78af7abd6d"
-pkg_dirname="tezos-master"
-pkg_deps=(core/libsodium core/openssl core/glibc core/libev core/gmp/6.1.0/20170513202112 core/zlib)
+pkg_source="https://github.com/vbmithr/tezos/archive/alphanet.zip"
+pkg_shasum="64724557a2b8069053788852b48e65c529e3afc146dd556cc3d4eb2a0028dc19"
+pkg_dirname="tezos-alphanet"
+pkg_deps=(core/libsodium bodymindarts/leveldb core/openssl core/glibc core/libev core/gmp/6.1.0/20170513202112 core/zlib)
 pkg_build_deps=(core/coreutils core/diffutils bodymindarts/opam core/camlp4 core/perl)
 pkg_bin_dirs=(bin)
 
