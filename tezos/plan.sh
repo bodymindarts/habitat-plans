@@ -7,7 +7,7 @@ pkg_version="0.1.0"
 pkg_source="https://github.com/vbmithr/tezos/archive/alphanet.zip"
 pkg_shasum="64724557a2b8069053788852b48e65c529e3afc146dd556cc3d4eb2a0028dc19"
 pkg_dirname="tezos-alphanet"
-pkg_deps=(core/libsodium bodymindarts/leveldb core/openssl core/glibc core/libev core/gmp/6.1.0/20170513202112 core/zlib)
+pkg_deps=(core/libsodium bodymindarts/leveldb bodymindarts/snappy core/openssl core/glibc core/libev core/gmp/6.1.0/20170513202112 core/zlib core/gcc-libs)
 pkg_build_deps=(core/coreutils core/diffutils bodymindarts/opam core/camlp4 core/perl)
 pkg_bin_dirs=(bin)
 
@@ -15,11 +15,11 @@ do_prepare() {
   opam init --no-setup --root=${HAB_CACHE_SRC_PATH}/opam/${pkg_name}
   eval `opam config env --root=${HAB_CACHE_SRC_PATH}/opam/${pkg_name}`
 
-  CPATH="$(pkg_path_for zlib)/include:$(pkg_path_for libev)/include:$(pkg_path_for libsodium)/include"
+  CPATH="$(pkg_path_for zlib)/include:$(pkg_path_for libev)/include:$(pkg_path_for libsodium)/include:$(pkg_path_for leveldb)/include:$(pkg_path_for snappy)/include"
   export CPATH
   build_line "Setting CPATH=$CPATH"
 
-  LIBRARY_PATH="$(pkg_path_for zlib)/lib:$(pkg_path_for libev)/lib:$(pkg_path_for libsodium)/lib"
+  LIBRARY_PATH="$(pkg_path_for zlib)/lib:$(pkg_path_for libev)/lib:$(pkg_path_for libsodium)/lib:$(pkg_path_for leveldb)/lib:$(pkg_path_for snappy)/lib"
   export LIBRARY_PATH
   build_line "Setting LIBRARY_PATH=$LIBRARY_PATH"
 
