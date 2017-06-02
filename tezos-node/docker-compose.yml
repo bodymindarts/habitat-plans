@@ -1,24 +1,25 @@
 version: '3'
 
 services:
-  tezos:
-    container_name: tezos
+  node:
+    container_name: node
     volumes:
     - ./:/conf
     - data:/hab/svc/tezos/data
-    image: bodymindarts/tezos
-    command: "start bodymindarts/tezos --config-from /conf"
+    image: bodymindarts/tezos-node
+    privileged: true
+    command: "start bodymindarts/tezos-node --config-from /conf"
     # environment:
     #   HAB_TEZOS: |
 
   client:
-    image: bodymindarts/tezos
+    image: bodymindarts/tezos-node
     entrypoint:
     - tezos-client
     - -addr
     - tezos
     command: "--help"
     links:
-    - tezos
+    - node
 volumes:
   data: {}

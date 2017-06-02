@@ -2,6 +2,10 @@
 
 exec 2>&1
 
+if [[ ! -f /etc/services ]]; then
+  cp -v {{pkgPathFor "core/iana-etc"}}/etc/services /etc/services
+fi
+
 node='tezos-node'
 node_dir={{pkg.svc_data_path}}
 rpc_addr="127.0.0.1:{{cfg.rpc_port}}"
